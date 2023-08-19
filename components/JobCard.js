@@ -1,16 +1,24 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { getSingleCar } from '../api/carData';
 
-export default function CarCard({ carObj }) {
+export default function JobCard({ jobObj }) {
+  const [car, setCar] = useState({});
+
+  useEffect(() => {
+    getSingleCar(jobObj.car_id).then(setCar);
+  }, []);
+
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={carObj.image} alt={carObj.title} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{carObj.year} {carObj.make} {carObj.model}</Card.Title>
-        <Link href={`/cars/${carObj.firebaseKey}`} passHref>
+        <Card.Title>{jobObj.title}</Card.Title>
+        <p>{car.make} {car.model}</p>
+        <Link href={`/jobs/${jobObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
       </Card.Body>
@@ -18,10 +26,11 @@ export default function CarCard({ carObj }) {
   );
 }
 
-CarCard.propTypes = {
-  carObj: PropTypes.shape({
+JobCard.propTypes = {
+  jobObj: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
+    car_id: PropTypes.string,
     make: PropTypes.string,
     year: PropTypes.string,
     model: PropTypes.string,

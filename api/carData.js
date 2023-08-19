@@ -20,4 +20,16 @@ const getCars = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getCars;
+const getSingleCar = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cars/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export { getCars, getSingleCar };

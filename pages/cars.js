@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
-import getCars from '../api/carData';
+import { getCars } from '../api/carData';
 import CarCard from '../components/CarCard';
 
 export default function Cars() {

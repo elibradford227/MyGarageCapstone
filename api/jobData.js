@@ -32,8 +32,8 @@ const getSingleJob = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getCarsJobs = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/jobs.json?orderBy="car_id"`, {
+const getCarsJobs = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json?orderBy="car_id"&equalTo="${id}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

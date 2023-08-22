@@ -6,8 +6,8 @@ import Link from 'next/link';
 
 export default function CarCard({ carObj }) {
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={carObj.image} alt={carObj.title} style={{ height: '400px' }} />
+    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }}>
+      <Card.Img variant="top" src={carObj.image ? carObj.image : 'default-car.webp'} alt={carObj.title} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{carObj.year} {carObj.make} {carObj.model}</Card.Title>
         <Link href={`/cars/${carObj.firebaseKey}`} passHref>

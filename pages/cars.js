@@ -18,10 +18,13 @@ export default function Cars() {
   }, []);
 
   return (
-    <div className="text-center my-4">
-      {cars.map((car) => (
-        <CarCard key={car.firebaseKey} carObj={car} />
-      ))}
+    <div>
+      <h1>Cars</h1>
+      <div className="d-flex flex-wrap">
+        {cars.map((car) => (
+          <CarCard key={car.firebaseKey} carObj={car} />
+        ))}
+      </div>
     </div>
   );
 }

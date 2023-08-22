@@ -32,4 +32,16 @@ const getSingleCar = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getCars, getSingleCar };
+const deleteCar = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cars/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+export { getCars, getSingleCar, deleteCar };

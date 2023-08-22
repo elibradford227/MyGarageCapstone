@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import { getCarsJobs } from '../api/jobData';
+import { getJobsWithDetails } from '../api/jobData';
 import JobCard from '../components/JobCard';
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
 
   const getAllJobs = () => {
-    getCarsJobs().then(setJobs);
+    getJobsWithDetails().then(setJobs);
   };
 
   useEffect(() => {

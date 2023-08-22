@@ -32,6 +32,18 @@ const getSingleJob = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getJobsWithDetails = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json?orderBy="car_id"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const getCarsJobs = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/jobs.json?orderBy="car_id"&equalTo="${id}"`, {
     method: 'GET',
@@ -44,4 +56,18 @@ const getCarsJobs = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getJobs, getCarsJobs, getSingleJob };
+const deleteJob = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+export {
+  getJobs, getCarsJobs, getSingleJob, deleteJob, getJobsWithDetails,
+};

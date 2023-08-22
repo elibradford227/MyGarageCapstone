@@ -15,10 +15,13 @@ export default function Jobs() {
   }, []);
 
   return (
-    <div className="text-center my-4">
-      {jobs.map((job) => (
-        <JobCard key={job.firebaseKey} jobObj={job} />
-      ))}
+    <div>
+      <h1>Jobs</h1>
+      <div className="d-flex flex-wrap">
+        {jobs.map((job) => (
+          <JobCard key={job.firebaseKey} jobObj={job} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function JobCard({ jobObj }) {
   }, []);
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card style={{ width: '18rem', marginRight: '20px' }}>
       <Card.Body>
         <Card.Title>{jobObj.title}</Card.Title>
         <p>{car.make} {car.model}</p>

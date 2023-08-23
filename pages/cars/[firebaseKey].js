@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
+import Link from 'next/link';
 import { getSingleCar, deleteCar } from '../../api/carData';
 import { getCarsJobs } from '../../api/jobData';
 import JobCard from '../../components/JobCard';
@@ -45,8 +46,13 @@ export default function ViewCar() {
           <p>{carDetails.description || ''}</p>
         </div>
         <Button variant="danger" onClick={deleteThisCar} className="m-2">
-          DELETE
+          Delete
         </Button>
+        <Link href={`/cars/edit/${carDetails.firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">
+            Edit
+          </Button>
+        </Link>
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>

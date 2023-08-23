@@ -9,6 +9,8 @@ import { getSingleCar } from '../api/carData';
 export default function JobCard({ jobObj }) {
   const [car, setCar] = useState({});
 
+  console.warn(car);
+
   useEffect(() => {
     getSingleCar(jobObj.car_id).then(setCar);
   }, []);

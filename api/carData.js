@@ -32,6 +32,24 @@ const getSingleCar = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleCarByID = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cars.json?orderBy="id"&equalTo="${id}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 const deleteCar = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/cars/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -71,5 +89,5 @@ const updateCar = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getCars, getSingleCar, deleteCar, createCar, updateCar,
+  getCars, getSingleCar, deleteCar, createCar, updateCar, getSingleCarByID,
 };

@@ -36,9 +36,9 @@ function CarForm({ obj }) {
     if (obj.firebaseKey) {
       updateCar(formInput).then(() => router.push(`/cars/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, car_id: Math.floor(Math.random() * 900 + 1) };
+      const payload = { ...formInput, uid: user.uid };
       createCar(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
+        const patchPayload = { firebaseKey: name, id: name };
         updateCar(patchPayload).then(() => {
           router.push('/cars');
         });

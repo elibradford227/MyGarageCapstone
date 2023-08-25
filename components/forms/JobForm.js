@@ -106,10 +106,8 @@ function JobForm({ obj }) {
 
 JobForm.propTypes = {
   obj: PropTypes.shape({
-    name: PropTypes.string,
+    title: PropTypes.string,
     image: PropTypes.string,
-    role: PropTypes.string,
-    author_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

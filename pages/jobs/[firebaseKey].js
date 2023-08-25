@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
+import PartCard from '../../components/PartCard';
 import { getSingleJob, deleteJob } from '../../api/jobData';
+import { getJobsParts } from '../../api/partsData';
 
-export default function ViewCar() {
+export default function ViewJob() {
   const [jobDetails, setJobDetails] = useState({});
+  const [jobParts, setJobParts] = useState([]);
   const router = useRouter();
 
   // TODO: grab firebaseKey from url
@@ -21,9 +24,10 @@ export default function ViewCar() {
   // TODO: make call to API layer to get the data
   useEffect(() => {
     getSingleJob(firebaseKey).then(setJobDetails);
-  }, [firebaseKey]);
+    getJobsParts(jobDetails.id).then(setJobParts);
+  }, [firebaseKey, jobDetails.id]);
 
-  console.warn(jobDetails);
+  console.warn(jobParts);
 
   return (
     <div className="mt-5 d-flex flex-wrap" id="carViewContainer">
@@ -45,12 +49,21 @@ export default function ViewCar() {
         </Link>
       </div>
       <div id="carsJobs">
-        <h1 id="jobsh1">Jobs</h1>
-        <Button variant="primary" className="addBtn">Add A Part</Button>
+        <h1 id="jobsh1">Parts</h1>
+        {/* <Link href="/parts/new" passHref> */}
+        <Link
+          href={{
+            pathname: '/parts/new',
+            query: firebaseKey,
+          }}
+          passHref
+        >
+          <Button variant="primary" className="addBtn">Add A Part</Button>
+        </Link>
         <div id="jobsDisplay">
-          {/* {carsJobs.map((job) => (
-            <JobCard key={job.firebaseKey} jobObj={job} />
-          ))} */}
+          {jobParts.map((part) => (
+            <PartCard key={part.firebaseKey} partObj={part} />
+          ))}
         </div>
       </div>
     </div>

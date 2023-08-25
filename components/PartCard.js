@@ -23,7 +23,14 @@ export default function PartCard({ partObj }) {
         <Button variant="danger" onClick={deleteThisPart} className="m-2">
           DELETE
         </Button>
-        <Link href={`/parts/edit/${partObj.firebaseKey}`} passHref>
+        {/* <Link href={`/parts/edit/${partObj.firebaseKey}`} passHref> */}
+        <Link
+          href={{
+            pathname: `/parts/edit/${partObj.firebaseKey}`,
+            query: partObj.job_id,
+          }}
+          passHref
+        >
           <Button variant="primary" className="m-2">
             EDIT
           </Button>
@@ -39,6 +46,7 @@ PartCard.propTypes = {
     name: PropTypes.string,
     quantity: PropTypes.string,
     cost: PropTypes.string,
+    job_id: PropTypes.string,
     model: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,

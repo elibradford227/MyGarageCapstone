@@ -7,7 +7,7 @@ import PartCard from '../../components/PartCard';
 import { getSingleJob, deleteJob } from '../../api/jobData';
 import { getJobsParts } from '../../api/partsData';
 
-export default function ViewCar() {
+export default function ViewJob() {
   const [jobDetails, setJobDetails] = useState({});
   const [jobParts, setJobParts] = useState([]);
   const router = useRouter();

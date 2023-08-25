@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -6,22 +7,27 @@ import { Button } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../utils/context/authContext';
-import { createCar, updateCar, getCars } from '../../api/carData';
+import { createPart, updatePart } from '../../api/partsData';
 
 const initialState = {
-  make: '',
-  model: '',
-  year: '',
-  mileage: '',
+  name: '',
+  cost: '',
+  quantity: '',
 };
-function CarForm({ obj }) {
+function PartForm({ obj, jobId }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [job, setJob] = useState('');
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
+
+  useEffect(() => {
+    setJob(Object.keys(jobId));
+    console.warn(job[0]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,13 +40,14 @@ function CarForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateCar(formInput).then(() => router.push(`/cars/${obj.firebaseKey}`));
+      updatePart(formInput).then(() => router.push(`/jobs/${job[0]}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
-      createCar(payload).then(({ name }) => {
+      const payload = { ...formInput, uid: user.uid, job_id: job[0] };
+      console.warn(payload);
+      createPart(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name, id: name };
-        updateCar(patchPayload).then(() => {
-          router.push('/cars');
+        updatePart(patchPayload).then(() => {
+          router.push(`/jobs/${job[0]}`);
         });
       });
     }
@@ -48,68 +55,59 @@ function CarForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Car</h2>
+      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Part</h2>
 
-      <FloatingLabel controlId="floatingInput1" label="Car Year" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Part Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Car Year"
-          name="year"
-          value={formInput.year}
+          placeholder="Part Name"
+          name="name"
+          value={formInput.name}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Car Make" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Part Cost" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Car Make"
-          name="make"
-          value={formInput.make}
+          placeholder="Part Cost"
+          name="cost"
+          value={formInput.cost}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Car Model" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Part Quantity" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Car Model"
-          name="model"
-          value={formInput.model}
+          placeholder="Part Quantity"
+          name="quantity"
+          value={formInput.quantity}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Car Mileage" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Car Mileage"
-          name="mileage"
-          value={formInput.mileage}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Car</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Part</Button>
     </Form>
   );
 }
 
-CarForm.propTypes = {
+PartForm.propTypes = {
+  jobId: PropTypes.string,
   obj: PropTypes.shape({
     name: PropTypes.string,
-    image: PropTypes.string,
-    role: PropTypes.string,
+    cost: PropTypes.string,
+    quantity: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
 
-CarForm.defaultProps = {
+PartForm.defaultProps = {
   obj: initialState,
+  jobId: '',
 };
 
-export default CarForm;
+export default PartForm;

@@ -50,7 +50,16 @@ export default function ViewCar() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Parts</h1>
-        <Button variant="primary" className="addBtn">Add A Part</Button>
+        {/* <Link href="/parts/new" passHref> */}
+        <Link
+          href={{
+            pathname: '/parts/new',
+            query: firebaseKey,
+          }}
+          passHref
+        >
+          <Button variant="primary" className="addBtn">Add A Part</Button>
+        </Link>
         <div id="jobsDisplay">
           {jobParts.map((part) => (
             <PartCard key={part.firebaseKey} partObj={part} />

@@ -56,7 +56,9 @@ export default function ViewCar() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>
-        <Button variant="primary" className="addBtn">Add A Job</Button>
+        <Link href="/jobs/new" passHref>
+          <Button variant="primary" className="addBtn">Add A Job</Button>
+        </Link>
         <div id="jobsDisplay">
           {carsJobs.map((job) => (
             <JobCard key={job.firebaseKey} jobObj={job} />

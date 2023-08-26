@@ -10,7 +10,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../utils/context/authContext';
 import { createJob, updateJob } from '../../api/jobData';
-import { getCars, getSingleCar } from '../../api/carData';
+import { getCars, getSingleCarByID } from '../../api/carData';
 
 const initialState = {
   title: '',
@@ -20,6 +20,7 @@ const initialState = {
 function JobForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [cars, setCars] = useState([]);
+  const [selectedCar, setSelectedCar] = useState('');
   const router = useRouter();
   const { user } = useAuth();
 
@@ -28,7 +29,10 @@ function JobForm({ obj }) {
   };
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj.firebaseKey) {
+      setFormInput(obj);
+      getSingleCarByID(obj.car_id).then((result) => setSelectedCar(`${result[0].year} ${result[0].make} ${result[0].model}`));
+    }
     getAllCars();
   }, [obj, user]);
 
@@ -42,14 +46,13 @@ function JobForm({ obj }) {
   };
 
   const handleSelect = (e) => {
-    // console.warn(e);
-    // setValue(e);
-    const value = e;
+    const displayVal = e.split(',');
+    setSelectedCar(`${displayVal[1]} ${displayVal[2]} ${displayVal[3]}`);
+    const value = displayVal[0];
     setFormInput((prevState) => ({
       ...prevState,
       car_id: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSubmit = (e) => {
@@ -66,8 +69,6 @@ function JobForm({ obj }) {
       });
     }
   };
-
-  // cars.map((car) => console.warn(car.id, car.year, car.make, car.model));
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -94,9 +95,10 @@ function JobForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <DropdownButton id="dropdown-basic-button" type="dropdown" title={formInput.car_id === '' ? 'Select a Car' : 'Car Selected!'} name="car_id" onSelect={handleSelect}>
+      <p>You selected: {selectedCar}</p>
+      <DropdownButton id="dropdown-basic-button" type="dropdown" title={formInput.car_id === '' ? 'Select a Car' : 'Car Selected!'} name="car_id" onSelect={handleSelect} required>
         {cars.map((car) => (
-          <Dropdown.Item eventKey={car.id}>{car.year} {car.make} {car.model}</Dropdown.Item>
+          <Dropdown.Item eventKey={[car.id, car.year, car.make, car.model]}>{car.year} {car.make} {car.model}</Dropdown.Item>
         ))}
       </DropdownButton>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Job</Button>
@@ -108,6 +110,7 @@ JobForm.propTypes = {
   obj: PropTypes.shape({
     title: PropTypes.string,
     image: PropTypes.string,
+    car_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

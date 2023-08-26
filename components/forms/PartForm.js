@@ -26,15 +26,16 @@ function PartForm({ obj, jobId }) {
 
   useEffect(() => {
     setJob(Object.keys(jobId));
-    console.warn(job[0]);
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.warn(name, value);
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    // console.warn(Number(`${formInput.cost}`));
   };
 
   const handleSubmit = (e) => {

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
@@ -10,9 +10,9 @@ import { getJobsParts } from '../../api/partsData';
 export default function ViewJob() {
   const [jobDetails, setJobDetails] = useState({});
   const [jobParts, setJobParts] = useState([]);
+  const [totalCosts, setTotalCosts] = useState('');
   const router = useRouter();
 
-  // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
   const deleteThisJob = () => {
@@ -21,13 +21,22 @@ export default function ViewJob() {
     }
   };
 
-  // TODO: make call to API layer to get the data
+  const calculateCosts = useCallback(() => {
+    let countCost = 0;
+    for (let i = 0; i < jobParts.length; i++) {
+      countCost += Number(`${jobParts[i].cost}`);
+    }
+    setTotalCosts(countCost);
+  }, [jobParts]);
+
   useEffect(() => {
     getSingleJob(firebaseKey).then(setJobDetails);
     getJobsParts(jobDetails.id).then(setJobParts);
   }, [firebaseKey, jobDetails.id]);
 
-  console.warn(jobParts);
+  useEffect(() => {
+    calculateCosts();
+  }, [calculateCosts]);
 
   return (
     <div className="mt-5 d-flex flex-wrap" id="carViewContainer">
@@ -39,6 +48,7 @@ export default function ViewJob() {
           {jobDetails.title}
         </h2>
         <p>{jobDetails.description || ''}</p>
+        <p>${totalCosts}</p>
         <Button variant="danger" onClick={deleteThisJob} className="m-2">
           DELETE
         </Button>

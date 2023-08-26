@@ -3,10 +3,28 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { getJobsWithDetails } from '../api/jobData';
+import { getJobsParts } from '../api/partsData';
 import JobCard from '../components/JobCard';
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const [totalCosts, setTotalCosts] = useState(0);
+
+  const getAllPartsTotal = () => {
+    let sum = 0;
+    jobs.forEach((e) => {
+      getJobsParts(e.id).then((part) => {
+        part.forEach((item) => {
+          sum += Number(`${item.cost}`);
+          setTotalCosts(sum);
+        });
+      });
+    });
+  };
+
+  // useEffect(() => {
+  //   getAllPartsTotal();
+  // }, []);
 
   const getAllJobs = () => {
     getJobsWithDetails().then(setJobs);
@@ -16,9 +34,14 @@ export default function Jobs() {
     getAllJobs();
   }, []);
 
+  useEffect(() => {
+    getAllPartsTotal();
+  }, [jobs]);
+
   return (
     <div>
       <h1>Jobs</h1>
+      <h2>Expenses:${totalCosts}</h2>
       <Link href="/jobs/new" passHref>
         <Button variant="primary" className="addBtn">Add A Job</Button>
       </Link>

@@ -22,10 +22,6 @@ export default function Jobs() {
     });
   };
 
-  // useEffect(() => {
-  //   getAllPartsTotal();
-  // }, []);
-
   const getAllJobs = () => {
     getJobsWithDetails().then(setJobs);
   };

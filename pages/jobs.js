@@ -22,11 +22,9 @@ export default function Jobs() {
     });
   };
 
-  console.warn(totalCosts);
-
-  useEffect(() => {
-    getAllPartsTotal();
-  }, []);
+  // useEffect(() => {
+  //   getAllPartsTotal();
+  // }, []);
 
   const getAllJobs = () => {
     getJobsWithDetails().then(setJobs);
@@ -35,6 +33,10 @@ export default function Jobs() {
   useEffect(() => {
     getAllJobs();
   }, []);
+
+  useEffect(() => {
+    getAllPartsTotal();
+  }, [jobs]);
 
   return (
     <div>

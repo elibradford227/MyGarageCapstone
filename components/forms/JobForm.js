@@ -10,7 +10,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../utils/context/authContext';
 import { createJob, updateJob } from '../../api/jobData';
-import { getCars, getSingleCar } from '../../api/carData';
+import { getCars, getSingleCarByID } from '../../api/carData';
 
 const initialState = {
   title: '',
@@ -29,7 +29,10 @@ function JobForm({ obj }) {
   };
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj.firebaseKey) {
+      setFormInput(obj);
+      getSingleCarByID(obj.car_id).then((result) => setSelectedCar(`${result[0].year} ${result[0].make} ${result[0].model}`));
+    }
     getAllCars();
   }, [obj, user]);
 
@@ -43,8 +46,6 @@ function JobForm({ obj }) {
   };
 
   const handleSelect = (e) => {
-    // console.warn(e);
-    // setValue(e);
     const displayVal = e.split(',');
     setSelectedCar(`${displayVal[1]} ${displayVal[2]} ${displayVal[3]}`);
     const value = displayVal[0];
@@ -52,7 +53,6 @@ function JobForm({ obj }) {
       ...prevState,
       car_id: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSubmit = (e) => {
@@ -69,8 +69,6 @@ function JobForm({ obj }) {
       });
     }
   };
-
-  // cars.map((car) => console.warn(car.id, car.year, car.make, car.model));
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -112,6 +110,7 @@ JobForm.propTypes = {
   obj: PropTypes.shape({
     title: PropTypes.string,
     image: PropTypes.string,
+    car_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

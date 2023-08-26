@@ -15,8 +15,6 @@ export default function ViewCar() {
   // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
-  console.warn(carsJobs[0].firebaseKey);
-
   const deleteThisCar = () => {
     if (window.confirm(`Delete ${carDetails.model}?`)) {
       deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJob(job.firebaseKey))).then(() => { router.push('/cars'); });
@@ -59,7 +57,14 @@ export default function ViewCar() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>
-        <Link href="/jobs/new" passHref>
+        {/* <Link href="/jobs/new" passHref> */}
+        <Link
+          href={{
+            pathname: '/jobs/new',
+            query: carDetails.firebaseKey,
+          }}
+          passHref
+        >
           <Button variant="primary" className="addBtn">Add A Job</Button>
         </Link>
         <div id="jobsDisplay">

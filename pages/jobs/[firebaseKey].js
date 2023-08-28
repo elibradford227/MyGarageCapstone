@@ -6,6 +6,7 @@ import Link from 'next/link';
 import PartCard from '../../components/PartCard';
 import { getSingleJob, deleteJob } from '../../api/jobData';
 import { getJobsParts } from '../../api/partsData';
+import deleteJobsParts from '../../api/mergedData';
 
 export default function ViewJob() {
   const [jobDetails, setJobDetails] = useState({});
@@ -17,7 +18,7 @@ export default function ViewJob() {
 
   const deleteThisJob = () => {
     if (window.confirm(`Delete ${jobDetails.title} job?`)) {
-      deleteJob(jobDetails.firebaseKey).then(() => { router.push('/jobs'); });
+      deleteJob(jobDetails.firebaseKey).then(deleteJobsParts(jobDetails.firebaseKey)).then(() => { router.push('/jobs'); });
     }
   };
 

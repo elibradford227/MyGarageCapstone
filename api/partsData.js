@@ -62,6 +62,18 @@ const getJobsParts = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// const deleteJobsParts = (id) => new Promise((resolve, reject) => {
+//   fetch(`${endpoint}/parts.json?orderBy="job_id"&equalTo="${id}"`, {
+//     method: 'DELETE',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((data) => resolve(Object.values(data)))
+//     .catch(reject);
+// });
+
 const deletePart = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/parts/${firebaseKey}.json`, {
     method: 'DELETE',

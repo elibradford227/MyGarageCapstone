@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import { getSingleCar, deleteCar } from '../../api/carData';
 import { getCarsJobs } from '../../api/jobData';
+import deleteJobsParts from '../../api/mergedData';
 import JobCard from '../../components/JobCard';
 
 export default function ViewCar() {
@@ -12,22 +13,18 @@ export default function ViewCar() {
   const [carsJobs, setCarsJobs] = useState([]);
   const router = useRouter();
 
-  // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
   const deleteThisCar = () => {
     if (window.confirm(`Delete ${carDetails.model}?`)) {
-      deleteCar(carDetails.firebaseKey).then(() => { router.push('/cars'); });
+      deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJobsParts(job.firebaseKey))).then(() => { router.push('/cars'); });
     }
   };
 
-  // TODO: make call to API layer to get the data
   useEffect(() => {
     getSingleCar(firebaseKey).then(setCarDetails);
     getCarsJobs(carDetails.id).then(setCarsJobs);
   }, [firebaseKey, carDetails.id]);
-
-  console.warn(carsJobs);
 
   return (
     <div className="mt-5 d-flex flex-wrap" id="carViewContainer">
@@ -56,7 +53,14 @@ export default function ViewCar() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>
-        <Link href="/jobs/new" passHref>
+        {/* <Link href="/jobs/new" passHref> */}
+        <Link
+          href={{
+            pathname: '/jobs/new',
+            query: carDetails.firebaseKey,
+          }}
+          passHref
+        >
           <Button variant="primary" className="addBtn">Add A Job</Button>
         </Link>
         <div id="jobsDisplay">

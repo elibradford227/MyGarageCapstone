@@ -10,7 +10,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../utils/context/authContext';
 import { createJob, updateJob } from '../../api/jobData';
-import { getCars, getSingleCarByID } from '../../api/carData';
+import { getCars, getSingleCarByID, getSingleCar } from '../../api/carData';
 
 const initialState = {
   title: '',
@@ -24,6 +24,8 @@ function JobForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
 
+  console.warn(obj);
+
   const getAllCars = () => {
     getCars(user.uid).then(setCars);
   };
@@ -32,6 +34,10 @@ function JobForm({ obj }) {
     if (obj.firebaseKey) {
       setFormInput(obj);
       getSingleCarByID(obj.car_id).then((result) => setSelectedCar(`${result[0].year} ${result[0].make} ${result[0].model}`));
+    } else if (Object.keys(obj).length === 0) {
+      setSelectedCar('');
+    } else if (obj) {
+      getSingleCar(Object.keys(obj)).then((result) => setSelectedCar(`${result.year} ${result.make} ${result.model}`));
     }
     getAllCars();
   }, [obj, user]);

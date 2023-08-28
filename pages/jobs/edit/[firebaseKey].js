@@ -6,14 +6,11 @@ import JobForm from '../../../components/forms/JobForm';
 export default function EditJob() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  // TODO: grab the firebasekey
   const { firebaseKey } = router.query;
 
-  // TODO: make a call to the API to get the book data
   useEffect(() => {
     getSingleJob(firebaseKey).then(setEditItem);
   }, [firebaseKey]);
 
-  // TODO: pass object to form
   return (<JobForm obj={editItem} />);
 }

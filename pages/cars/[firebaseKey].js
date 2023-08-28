@@ -13,22 +13,18 @@ export default function ViewCar() {
   const [carsJobs, setCarsJobs] = useState([]);
   const router = useRouter();
 
-  // TODO: grab firebaseKey from url
   const { firebaseKey } = router.query;
 
   const deleteThisCar = () => {
     if (window.confirm(`Delete ${carDetails.model}?`)) {
-      deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJobsParts(job.firebaseKey)));
+      deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJobsParts(job.firebaseKey))).then(() => { router.push('/cars'); });
     }
   };
 
-  // TODO: make call to API layer to get the data
   useEffect(() => {
     getSingleCar(firebaseKey).then(setCarDetails);
     getCarsJobs(carDetails.id).then(setCarsJobs);
   }, [firebaseKey, carDetails.id]);
-
-  console.warn(carsJobs);
 
   return (
     <div className="mt-5 d-flex flex-wrap" id="carViewContainer">

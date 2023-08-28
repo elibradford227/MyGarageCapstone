@@ -23,7 +23,7 @@ export default function Cars() {
     <div>
       <h1>Cars</h1>
       <Link href="/cars/new" passHref>
-        <Button variant="primary" className="addBtn">Add A car</Button>
+        <Button variant="primary" className="addBtn">Add A Car</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {cars.map((car) => (

@@ -37,7 +37,11 @@ function JobForm({ obj }) {
     } else if (Object.keys(obj).length === 0) {
       setSelectedCar('');
     } else if (obj) {
-      getSingleCar(Object.keys(obj)).then((result) => setSelectedCar(`${result.year} ${result.make} ${result.model}`));
+      getSingleCar(Object.keys(obj)).then((result) => {
+        console.warn(result);
+        formInput.car_id = result.firebaseKey;
+        setSelectedCar(`${result.year} ${result.make} ${result.model}`);
+      });
     }
     getAllCars();
   }, [obj, user]);
@@ -102,7 +106,7 @@ function JobForm({ obj }) {
         />
       </FloatingLabel>
       <p>You selected: {selectedCar}</p>
-      <DropdownButton id="dropdown-basic-button" type="dropdown" title={formInput.car_id === '' ? 'Select a Car' : 'Car Selected!'} name="car_id" onSelect={handleSelect} required>
+      <DropdownButton id="dropdown-basic-button" type="dropdown" title={selectedCar === '' ? 'Select a Car' : 'Car Selected!'} name="car_id" onSelect={handleSelect} required>
         {cars.map((car) => (
           <Dropdown.Item eventKey={[car.id, car.year, car.make, car.model]}>{car.year} {car.make} {car.model}</Dropdown.Item>
         ))}

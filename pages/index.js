@@ -1,10 +1,8 @@
 import { Button } from 'react-bootstrap';
+import Link from 'next/link';
 import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
 
 function Home() {
-  const { user } = useAuth();
-
   return (
     <div>
       <head>
@@ -13,13 +11,23 @@ function Home() {
       <div
         className="text-center d-flex flex-column justify-content-center align-content-center"
         style={{
-          height: '90vh',
+          height: '50vh',
           padding: '30px',
           maxWidth: '400px',
           margin: '0 auto',
         }}
       >
-        <h1>Hello {user.displayName}! </h1>
+        <h1>Welcome to MyGarage</h1>
+        <Link passHref href="/cars">
+          <Button variant="secondary">Cars</Button>
+        </Link>
+        {/* <Button variant="secondary" onClick={signOut}>Cars</Button> */}
+        <Link passHref href="/jobs">
+          <Button variant="secondary">Jobs</Button>
+        </Link>
+        <Link passHref href="/profile">
+          <Button variant="secondary">Profile</Button>
+        </Link>
         <Button variant="danger" onClick={signOut}>Sign Out</Button>
       </div>
     </div>

@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import { getSingleCar, deleteCar } from '../../api/carData';
-import { getCarsJobs, deleteJob } from '../../api/jobData';
+import { getCarsJobs } from '../../api/jobData';
+import deleteJobsParts from '../../api/mergedData';
 import JobCard from '../../components/JobCard';
 
 export default function ViewCar() {
@@ -17,8 +18,7 @@ export default function ViewCar() {
 
   const deleteThisCar = () => {
     if (window.confirm(`Delete ${carDetails.model}?`)) {
-      deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJob(job.firebaseKey))).then(() => { router.push('/cars'); });
-      // deleteCar(carDetails.firebaseKey).then(deleteCarsJobs(carsJobs.car_id)).then(() => { router.push('/cars'); });
+      deleteCar(carDetails.firebaseKey).then(carsJobs.forEach((job) => deleteJobsParts(job.firebaseKey)));
     }
   };
 

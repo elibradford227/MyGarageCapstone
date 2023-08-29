@@ -36,6 +36,9 @@ export default function Jobs() {
 
   return (
     <div>
+      <head>
+        <title>MyGarage | Jobs</title>
+      </head>
       <h1>Jobs</h1>
       <h2>Expenses:${totalCosts}</h2>
       <Link href="/jobs/new" passHref>

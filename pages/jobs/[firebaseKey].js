@@ -25,7 +25,8 @@ export default function ViewJob() {
   const calculateCosts = useCallback(() => {
     let countCost = 0;
     for (let i = 0; i < jobParts.length; i++) {
-      countCost += Number(`${jobParts[i].cost}`);
+      countCost += Number(`${jobParts[i].cost}`) * Number(`${jobParts[i].quantity}`);
+      // countCost += Number(`${jobParts[i].cost}`);
     }
     setTotalCosts(countCost);
   }, [jobParts]);

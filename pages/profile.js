@@ -4,5 +4,12 @@ import User from '../components/User';
 
 export default function Profile() {
   const { user } = useAuth();
-  return <User userObj={user} />;
+  return (
+    <div>
+      <head>
+        <title>MyGarage | Profile</title>
+      </head>
+      <User userObj={user} />
+    </div>
+  );
 }

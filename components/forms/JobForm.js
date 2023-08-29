@@ -24,8 +24,6 @@ function JobForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
 
-  console.warn(obj);
-
   const getAllCars = () => {
     getCars(user.uid).then(setCars);
   };
@@ -38,7 +36,6 @@ function JobForm({ obj }) {
       setSelectedCar('');
     } else if (obj) {
       getSingleCar(Object.keys(obj)).then((result) => {
-        console.warn(result);
         formInput.car_id = result.firebaseKey;
         setSelectedCar(`${result.year} ${result.make} ${result.model}`);
       });
@@ -52,7 +49,6 @@ function JobForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSelect = (e) => {
@@ -84,7 +80,7 @@ function JobForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Job</h2>
 
-      <FloatingLabel controlId="floatingInput2" label="Job title" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Job title" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Job title"

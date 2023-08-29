@@ -13,6 +13,7 @@ const initialState = {
   model: '',
   year: '',
   mileage: '',
+  image: '',
 };
 function CarForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
@@ -91,6 +92,16 @@ function CarForm({ obj }) {
           value={formInput.mileage}
           onChange={handleChange}
           required
+        />
+      </FloatingLabel>
+
+      <FloatingLabel controlId="floatingInput4" label="Car Image" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Enter an image url"
+          name="image"
+          value={formInput.image}
+          onChange={handleChange}
         />
       </FloatingLabel>
 

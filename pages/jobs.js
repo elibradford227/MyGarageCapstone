@@ -15,7 +15,7 @@ export default function Jobs() {
     jobs.forEach((e) => {
       getJobsParts(e.id).then((part) => {
         part.forEach((item) => {
-          sum += Number(`${item.cost}`);
+          sum += Number(`${item.cost}`) * Number(`${item.quantity}`);
           setTotalCosts(sum);
         });
       });
@@ -36,6 +36,9 @@ export default function Jobs() {
 
   return (
     <div>
+      <head>
+        <title>MyGarage | Jobs</title>
+      </head>
       <h1>Jobs</h1>
       <h2>Expenses:${totalCosts}</h2>
       <Link href="/jobs/new" passHref>

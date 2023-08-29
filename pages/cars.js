@@ -21,15 +21,31 @@ export default function Cars() {
 
   return (
     <div>
+      <head>
+        <title>MyGarage | Cars</title>
+      </head>
       <h1>Cars</h1>
       <Link href="/cars/new" passHref>
-        <Button variant="primary" className="addBtn">Add A car</Button>
+        <Button variant="primary" className="addBtn">Add A Car</Button>
       </Link>
-      <div className="d-flex flex-wrap">
+      {
+        cars.length === 0 ? (
+          <>
+            <h2>No cars to display</h2>
+          </>
+        ) : (
+          <div className="d-flex flex-wrap">
+            {cars.map((car) => (
+              <CarCard key={car.firebaseKey} carObj={car} />
+            ))}
+          </div>
+        )
+      }
+      {/* <div className="d-flex flex-wrap">
         {cars.map((car) => (
           <CarCard key={car.firebaseKey} carObj={car} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

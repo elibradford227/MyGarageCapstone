@@ -70,7 +70,8 @@ function JobForm({ obj }) {
       createJob(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name, id: name };
         updateJob(patchPayload).then(() => {
-          router.push('/jobs');
+          console.warn(obj);
+          router.push(Object.keys(obj).length !== 0 ? (`/cars/${Object.keys(obj)}`) : ('/jobs/'));
         });
       });
     }

@@ -15,7 +15,7 @@ export default function Jobs() {
     jobs.forEach((e) => {
       getJobsParts(e.id).then((part) => {
         part.forEach((item) => {
-          sum += Number(`${item.cost}`);
+          sum += Number(`${item.cost}`) * Number(`${item.quantity}`);
           setTotalCosts(sum);
         });
       });

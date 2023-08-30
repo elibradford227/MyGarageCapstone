@@ -10,6 +10,19 @@ export default function Jobs() {
   const [jobs, setJobs] = useState([]);
   const [totalCosts, setTotalCosts] = useState(0);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setSearchResults(jobs);
+    const results = jobs.filter((job) => job.title.toLowerCase().includes(searchTerm));
+    setSearchResults(results);
+  }, [searchTerm]);
+
   const getAllPartsTotal = () => {
     let sum = 0;
     jobs.forEach((e) => {
@@ -42,13 +55,21 @@ export default function Jobs() {
       <div className="pageHead">
         <h1>Jobs</h1>
         <h2>Expenses: ${totalCosts}</h2>
+        <input
+          type="text"
+          placeholder="Search Jobs"
+          value={searchTerm}
+          onChange={handleChange}
+        />
         <Link href="/jobs/new" passHref>
           <Button variant="primary" className="addBtn">Add A Job</Button>
         </Link>
       </div>
       <div id="jobsPageBody">
         <div className="d-flex flex-wrap">
-          {jobs.map((job) => (
+          {searchResults.length === 0 ? jobs.map((job) => (
+            <JobCard key={job.firebaseKey} jobObj={job} />
+          )) : searchResults.map((job) => (
             <JobCard key={job.firebaseKey} jobObj={job} />
           ))}
         </div>

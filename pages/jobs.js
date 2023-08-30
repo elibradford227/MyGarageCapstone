@@ -39,15 +39,19 @@ export default function Jobs() {
       <head>
         <title>MyGarage | Jobs</title>
       </head>
-      <h1>Jobs</h1>
-      <h2>Expenses:${totalCosts}</h2>
-      <Link href="/jobs/new" passHref>
-        <Button variant="primary" className="addBtn">Add A Job</Button>
-      </Link>
-      <div className="d-flex flex-wrap">
-        {jobs.map((job) => (
-          <JobCard key={job.firebaseKey} jobObj={job} />
-        ))}
+      <div className="pageHead">
+        <h1>Jobs</h1>
+        <h2>Expenses: ${totalCosts}</h2>
+        <Link href="/jobs/new" passHref>
+          <Button variant="primary" className="addBtn">Add A Job</Button>
+        </Link>
+      </div>
+      <div id="jobsPageBody">
+        <div className="d-flex flex-wrap">
+          {jobs.map((job) => (
+            <JobCard key={job.firebaseKey} jobObj={job} />
+          ))}
+        </div>
       </div>
     </div>
   );

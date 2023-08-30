@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
@@ -11,7 +12,15 @@ export default function NavBarAuth() {
     <Navbar id="nav" collapseOnSelect expand="lg">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>MyGarage</Navbar.Brand>
+          <Navbar.Brand>
+            <img
+              src="/MyGarageNavLogo.png"
+              width="240"
+              height="60"
+              id="navLogo"
+              alt=""
+            />{' '}
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -23,10 +32,12 @@ export default function NavBarAuth() {
             <Link passHref href="/jobs">
               <Nav.Link>Jobs</Nav.Link>
             </Link>
+          </Nav>
+          <Nav className="ms-auto">
             <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
+              <Nav.Link id="navProfile">Profile</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>Sign Out</Button>
+            <Button id="signOutBtn" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

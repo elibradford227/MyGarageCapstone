@@ -52,11 +52,11 @@ export default function ViewJob() {
         <p>{jobDetails.description || ''}</p>
         <p>${totalCosts}</p>
         <Button variant="danger" onClick={deleteThisJob} className="m-2">
-          DELETE
+          Delete Job
         </Button>
         <Link href={`/jobs/edit/${jobDetails.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">
-            EDIT
+            Edit Job
           </Button>
         </Link>
       </div>

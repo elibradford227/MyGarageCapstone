@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { signOut } from '../utils/auth';
@@ -11,24 +12,25 @@ function Home() {
       <div
         className="text-center d-flex flex-column justify-content-center align-content-center"
         style={{
-          height: '50vh',
+          height: '60vh',
           padding: '30px',
-          maxWidth: '400px',
+          maxWidth: '450px',
           margin: '0 auto',
         }}
       >
-        <h1>Welcome to MyGarage</h1>
+        <h1>Welcome to</h1>
+        <img src="MyGarageNavLogo.png" alt="logo" />
+        <br />
         <Link passHref href="/cars">
-          <Button variant="secondary">Cars</Button>
+          <Button variant="secondary" className="homeBtn">Cars</Button>
         </Link>
-        {/* <Button variant="secondary" onClick={signOut}>Cars</Button> */}
         <Link passHref href="/jobs">
-          <Button variant="secondary">Jobs</Button>
+          <Button variant="secondary" className="homeBtn">Jobs</Button>
         </Link>
         <Link passHref href="/profile">
-          <Button variant="secondary">Profile</Button>
+          <Button variant="secondary" className="homeBtn">Profile</Button>
         </Link>
-        <Button variant="danger" onClick={signOut}>Sign Out</Button>
+        <Button onClick={signOut} id="signOutBtnHome">Sign Out</Button>
       </div>
     </div>
   );

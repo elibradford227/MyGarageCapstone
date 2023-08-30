@@ -11,7 +11,7 @@ export default function CarCard({ carObj }) {
       <Card.Body>
         <Card.Title>{carObj.year} {carObj.make} {carObj.model}</Card.Title>
         <Link href={`/cars/${carObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="viewBtn">View</Button>
         </Link>
       </Card.Body>
     </Card>

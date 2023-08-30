@@ -23,6 +23,8 @@ body {
 
 #nav {
   background-color: #D9D9D9;
+  font-size: large;
+  box-shadow: 0 0 10px rgba(0,0,0,.09);
 }
 
 #carViewContainer {
@@ -36,7 +38,7 @@ body {
   margin-top: 3rem;
   height: 70vh;
   padding: 30px;
-  max-width: 300px;
+  max-width: 330px;
   /* flex-basis: 25%; */
 }
 
@@ -45,24 +47,122 @@ body {
   margin-top: 3rem;
   margin-left: 10rem;
   display: block;
-  width: 60%;
+  width: 80%;
   min-width: 1px;
+  max-width: 800px;
   /* flex-basis: 75%; */
 }
-#jobsh1 {
-  /* background-color: orange; */
+/* #jobsh1 {
   display: inline;
   margin-bottom: 5rem;
+} */
+
+.btn {
+  border-radius: 0px;
+  border: none
 }
 
 #jobsDisplay {
   margin-top: 2rem;
 }
 
+.pageHead {
+  background-color: #D9D9D9;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 0px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0 0 10px rgba(0,0,0,.09);
+}
+
+#jobsPageBody {
+  padding-top: 20px;
+}
+
+#navLogo {
+  margin-right: 20px;
+}
+/* 
+h1, h2 {
+  display: inline;
+} */
+
+/* h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+} */
+
 .addBtn {
   float: right;
   background-color: #E87121;
-  border: none;
-  border-radius: none;
   width: 10rem;
+  margin-top: -2.5em;
+}
+
+#signOutBtn {
+  background-color: #E87121;
+  font-size: large;
+  padding: 10px;
+}
+
+#signOutBtnHome {
+  background-color: #E87121;
+  font-size: large;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#navProfile {
+  color: #E87121;
+  margin-top: 5px;
+}
+
+.homeBtn {
+  margin-top: 10px;
+  font-size: large;
+  padding: 10px;
+}
+
+.viewBtn {
+  width: 100%;
+  background-color: #E87121;
+  margin-top: 10px;
+}
+
+.card-img-top {
+  background-color: #D9D9D9;
+}
+
+.card-body {
+  background-color: #D9D9D9;
+  border-radius: 0px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0 0 10px rgba(0,0,0,.09);
+}
+
+@media screen and (max-width: 1400px) {
+  #carsJobs {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #carsJobs {
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  #carColumn {
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+
+  .addBtn {
+    margin-right: 10px;
+  }
+
+  .card {
+    margin-left: 32px;
+  }
 }

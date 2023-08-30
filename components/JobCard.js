@@ -19,7 +19,7 @@ export default function JobCard({ jobObj }) {
         <Card.Title>{jobObj.title}</Card.Title>
         <p>{car.make} {car.model}</p>
         <Link href={`/jobs/${jobObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="viewBtn">View</Button>
         </Link>
       </Card.Body>
     </Card>

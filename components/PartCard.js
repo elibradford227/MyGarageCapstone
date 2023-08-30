@@ -19,7 +19,7 @@ export default function PartCard({ partObj }) {
         <p>Quantity: {partObj.quantity}</p>
         <p>${partObj.cost}</p>
         <Button variant="danger" onClick={deleteThisPart} className="m-2">
-          DELETE
+          Delete
         </Button>
         {/* <Link href={`/parts/edit/${partObj.firebaseKey}`} passHref> */}
         <Link
@@ -30,7 +30,7 @@ export default function PartCard({ partObj }) {
           passHref
         >
           <Button variant="primary" className="m-2">
-            EDIT
+            Edit
           </Button>
         </Link>
       </Card.Body>

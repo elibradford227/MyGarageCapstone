@@ -33,6 +33,7 @@ export default function ViewCar() {
         className="d-flex flex-column"
       >
         <img src={carDetails.image ? carDetails.image : '../default-car.webp'} alt={carDetails.title} style={{ height: '200px', width: '270px' }} />
+        <br />
         <h3>
           {carDetails.make} {carDetails.model}
         </h3>
@@ -43,11 +44,11 @@ export default function ViewCar() {
           <p>{carDetails.description || ''}</p>
         </div>
         <Button variant="danger" onClick={deleteThisCar} className="m-2">
-          Delete
+          Delete Car
         </Button>
         <Link href={`/cars/edit/${carDetails.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">
-            Edit
+            Edit Car
           </Button>
         </Link>
       </div>

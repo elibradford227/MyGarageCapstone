@@ -24,10 +24,12 @@ export default function Cars() {
       <head>
         <title>MyGarage | Cars</title>
       </head>
-      <h1>Cars</h1>
-      <Link href="/cars/new" passHref>
-        <Button variant="primary" className="addBtn">Add A Car</Button>
-      </Link>
+      <div className="pageHead">
+        <h1>Cars</h1>
+        <Link href="/cars/new" passHref>
+          <Button variant="primary" className="addBtn">Add A Car</Button>
+        </Link>
+      </div>
       {
         cars.length === 0 ? (
           <>

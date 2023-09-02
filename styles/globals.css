@@ -141,6 +141,23 @@ h1, h2 {
   box-shadow: 0 0 10px rgba(0,0,0,.09);
 }
 
+#profile {
+  background-color: #d5d5d5;
+  margin-top: 20px;
+  padding: 40px;
+  width: 25%;
+  height: 50vh;
+}
+
+#profilePhoto {
+  border-radius: 100px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+}
+
 @media screen and (max-width: 1400px) {
   #carsJobs {
     width: 40%;

@@ -88,6 +88,24 @@ const updateCar = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCarsCompleteJobs = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/completedJobs.json?orderBy="car_id"&equalTo="${id}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 export {
-  getCars, getSingleCar, deleteCar, createCar, updateCar, getSingleCarByID,
+  getCars, getSingleCar, deleteCar, createCar, updateCar, getSingleCarByID, getCarsCompleteJobs,
 };

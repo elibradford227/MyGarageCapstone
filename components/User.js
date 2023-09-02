@@ -8,7 +8,7 @@ import { signOut } from '../utils/auth';
 export default function User({ userObj }) {
   return (
     <div>
-      <img alt="" src={userObj.photoURL} />
+      <img alt="" src={userObj.photoURL} id="profilePhoto" />
       <h1>{userObj.displayName}</h1>
       <p>{userObj.email}</p>
       <p>{userObj.metadata.lastSignInTime}</p>

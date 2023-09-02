@@ -35,7 +35,6 @@ function PartForm({ obj, jobId }) {
       ...prevState,
       [name]: value,
     }));
-    // console.warn(Number(`${formInput.cost}`));
   };
 
   const handleSubmit = (e) => {

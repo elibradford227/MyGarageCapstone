@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { getJobsWithDetails } from '../api/jobData';
+import { getJobs } from '../api/jobData';
 import { getJobsParts } from '../api/partsData';
+import { useAuth } from '../utils/context/authContext';
 import JobCard from '../components/JobCard';
 
 export default function Jobs() {
@@ -12,6 +13,8 @@ export default function Jobs() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
+  const { user } = useAuth();
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -36,7 +39,7 @@ export default function Jobs() {
   };
 
   const getAllJobs = () => {
-    getJobsWithDetails().then(setJobs);
+    getJobs(user.uid).then(setJobs);
   };
 
   useEffect(() => {

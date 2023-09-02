@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function CarCard({ carObj }) {
   return (
-    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }}>
+    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }} className="carCard">
       <Card.Img variant="top" src={carObj.image ? carObj.image : 'default-car.webp'} alt={carObj.title} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{carObj.year} {carObj.make} {carObj.model}</Card.Title>

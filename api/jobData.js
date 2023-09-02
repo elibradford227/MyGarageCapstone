@@ -112,6 +112,32 @@ const updateJob = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const markJobComplete = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/completedJobs.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateCompleteJob = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/completedJobs/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getJobs, getCarsJobs, getSingleJob, deleteJob, getJobsWithDetails, createJob, updateJob, deleteCarsJobs,
+  getJobs, getCarsJobs, getSingleJob, deleteJob, getJobsWithDetails, createJob, updateJob, deleteCarsJobs, markJobComplete, updateCompleteJob,
 };

@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import PartCard from '../../components/PartCard';
-import { getSingleJob, deleteJob } from '../../api/jobData';
+import {
+  getSingleJob, deleteJob, markJobComplete, updateCompleteJob,
+} from '../../api/jobData';
 import { getJobsParts } from '../../api/partsData';
 import deleteJobsParts from '../../api/mergedData';
 
@@ -26,10 +28,18 @@ export default function ViewJob() {
     let countCost = 0;
     for (let i = 0; i < jobParts.length; i++) {
       countCost += Number(`${jobParts[i].cost}`) * Number(`${jobParts[i].quantity}`);
-      // countCost += Number(`${jobParts[i].cost}`);
     }
     setTotalCosts(countCost);
   }, [jobParts]);
+
+  const markComplete = () => {
+    if (window.confirm('Are you sure you want to mark this job as completed?')) {
+      markJobComplete(jobDetails).then(({ name }) => {
+        const patchPayload = { firebaseKey: name, id: name, date: new Date().toISOString().split('T')[0] };
+        updateCompleteJob(patchPayload);
+      }).then(deleteJob(jobDetails.firebaseKey)).then(() => { router.push(`/cars/${jobDetails.car_id}`); });
+    }
+  };
 
   useEffect(() => {
     getSingleJob(firebaseKey).then(setJobDetails);
@@ -59,6 +69,7 @@ export default function ViewJob() {
             Edit Job
           </Button>
         </Link>
+        <Button variant="primary" className="m-2" onClick={markComplete}>Mark Complete</Button>
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Parts</h1>

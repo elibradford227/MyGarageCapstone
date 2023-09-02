@@ -9,7 +9,9 @@ export default function Profile() {
       <head>
         <title>MyGarage | Profile</title>
       </head>
-      <User userObj={user} />
+      <div id="profile">
+        <User userObj={user} />
+      </div>
     </div>
   );
 }

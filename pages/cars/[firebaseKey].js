@@ -51,6 +51,9 @@ export default function ViewCar() {
             Edit Car
           </Button>
         </Link>
+        <Link href={`/cars/history/${carDetails.firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">View Job History</Button>
+        </Link>
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>

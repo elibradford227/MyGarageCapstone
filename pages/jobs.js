@@ -70,11 +70,26 @@ export default function Jobs() {
       </div>
       <div id="jobsPageBody">
         <div className="d-flex flex-wrap">
-          {searchResults.length === 0 ? jobs.map((job) => (
+          {
+        jobs.length === 0 ? (
+          <>
+            <h2>No jobs to display</h2>
+          </>
+        ) : (
+          <div className="d-flex flex-wrap">
+            {searchResults.length === 0 ? jobs.map((job) => (
+              <JobCard key={job.firebaseKey} jobObj={job} />
+            )) : searchResults.map((job) => (
+              <JobCard key={job.firebaseKey} jobObj={job} />
+            ))}
+          </div>
+        )
+      }
+          {/* {searchResults.length === 0 ? jobs.map((job) => (
             <JobCard key={job.firebaseKey} jobObj={job} />
           )) : searchResults.map((job) => (
             <JobCard key={job.firebaseKey} jobObj={job} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

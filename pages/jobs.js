@@ -65,7 +65,7 @@ export default function Jobs() {
           onChange={handleChange}
         />
         <Link href="/jobs/new" passHref>
-          <Button variant="primary" className="addBtn">Add A Job</Button>
+          <Button variant="primary" className="addBtnJobs">Add A Job</Button>
         </Link>
       </div>
       <div id="jobsPageBody">

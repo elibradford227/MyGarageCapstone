@@ -93,7 +93,7 @@ h1, h2 {
   margin-bottom: 10px;
 } */
 
-.addBtn {
+.addBtn, .addBtnJobs {
   float: right;
   background-color: #E87121;
   width: 10rem;
@@ -167,19 +167,50 @@ h1, h2 {
 @media screen and (max-width: 767px) {
   #carsJobs {
     width: 100%;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 
   #carColumn {
     margin-left: 10px;
     margin-top: 0px;
+    height: 80vh;
   }
 
   .addBtn {
-    margin-right: 10px;
+    margin-right: 15px;
+    width: 7rem;
+  }
+
+  .addBtnJobs {
+    width: 7rem;
   }
 
   .card {
-    margin-left: 32px;
+    margin-left: 5px;
+    width: 120%;
+    margin-bottom: 20px; 
+  }
+
+  .card-body, .card-img-top {
+    width: 120%;
+    margin-right: none;
+  }
+
+  .card-img-top {
+    width: 120%;
+  }
+
+  #jobsh1 {
+    margin-left: 20px;
+  }
+
+  .carCard {
+    margin-bottom: 50px;
+    margin-left: 11px;
+  }
+
+  #profile {
+    width: 100%;
+    height: 70vh
   }
 }

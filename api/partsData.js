@@ -112,6 +112,24 @@ const updatePart = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCatalogParts = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/partsCatalog.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 export {
-  getParts, getSinglePart, deletePart, createPart, updatePart, getSinglePartByID, getJobsParts,
+  getParts, getSinglePart, deletePart, createPart, updatePart, getSinglePartByID, getJobsParts, getCatalogParts,
 };

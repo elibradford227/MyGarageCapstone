@@ -73,7 +73,6 @@ export default function ViewJob() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Parts</h1>
-        {/* <Link href="/parts/new" passHref> */}
         <Link
           href={{
             pathname: '/parts/new',
@@ -83,7 +82,7 @@ export default function ViewJob() {
         >
           <Button variant="primary" className="addBtn">Add A Part</Button>
         </Link>
-        <div id="jobsDisplay">
+        <div id="jobsDisplay" className="d-flex flex-wrap">
           {jobParts.map((part) => (
             <PartCard key={part.firebaseKey} partObj={part} />
           ))}

@@ -43,11 +43,6 @@ export default function Cars() {
           </div>
         )
       }
-      {/* <div className="d-flex flex-wrap">
-        {cars.map((car) => (
-          <CarCard key={car.firebaseKey} carObj={car} />
-        ))}
-      </div> */}
     </div>
   );
 }

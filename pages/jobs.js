@@ -85,11 +85,6 @@ export default function Jobs() {
           </div>
         )
       }
-          {/* {searchResults.length === 0 ? jobs.map((job) => (
-            <JobCard key={job.firebaseKey} jobObj={job} />
-          )) : searchResults.map((job) => (
-            <JobCard key={job.firebaseKey} jobObj={job} />
-          ))} */}
         </div>
       </div>
     </div>

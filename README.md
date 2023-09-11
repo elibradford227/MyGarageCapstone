@@ -52,6 +52,8 @@ Users no longer have to worry about remembering all the tasks, nitty gritty deta
 - Edit a part on job details page by clicking "Edit"
 - Delete a part on job details page by clicking "Delete"
 
+[Back to List of Topics](#topics)
+
 ## ERD
 
 ![MyGarage ERD (2)](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/01adba49-906a-4a0c-931b-f3b31f969f4c)
@@ -62,6 +64,8 @@ Users no longer have to worry about remembering all the tasks, nitty gritty deta
 ![car details page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/960485b1-e9c0-4a92-8656-c985c21b0261)
 ![job details page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/e579ccca-0087-4e4b-9879-1795972bbdfa)
 ![add parts page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/d0fdbada-4d75-4d0f-9273-c4b3395be017)
+
+[Back to List of Topics](#topics)
 
 ## Try It Out For Yourself
 
@@ -105,6 +109,7 @@ npm run dev
 
 9. Have fun!
 
+[Back to List of Topics](#topics)
 
 ## Tech Stacks
 <div align="center">  
@@ -123,3 +128,5 @@ npm run dev
 
 ## Contributors
 - [Eli Bradford](https://github.com/elibradford227)
+
+[Back to List of Topics](#topics)

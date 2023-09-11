@@ -97,7 +97,7 @@ npm install or npm i
 ``` bash
 npm run prepare
 ```
-7. To start Plated, run
+7. To start MyGarage, run
 ``` bash
 npm run dev
 ```

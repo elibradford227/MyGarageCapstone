@@ -9,6 +9,7 @@
 - [Features](#features)
 - [ERD](#erd)
 - [Project Screenshots](#project-screenshots)
+- [Try It Out For Yourself](#try-it-out-for-yourself)
 - [Relevant Links](#relevant-links)
 - [Tech Stacks](#tech-stacks)
 ___
@@ -61,6 +62,49 @@ Users no longer have to worry about remembering all the tasks, nitty gritty deta
 ![car details page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/960485b1-e9c0-4a92-8656-c985c21b0261)
 ![job details page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/e579ccca-0087-4e4b-9879-1795972bbdfa)
 ![add parts page](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/d0fdbada-4d75-4d0f-9273-c4b3395be017)
+
+## Try It Out For Yourself
+
+1. Set up a [Firebase](https://firebase.google.com/) project 
+
+2. Clone MyGarage to your local machine
+``` bash
+git@github.com:elibradford227/MyGarageCapstone.git
+```
+
+2. Move into directory
+``` bash
+cd MyGarageCapstone
+```
+
+3. Once in MyGarage's code, create a .env file at the root of the project and paste the following keys into the .env file:
+``` bash
+NEXT_PUBLIC_FIREBASE_API_KEY=""
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=""
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=""
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=""
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=""
+NEXT_PUBLIC_FIREBASE_APP_ID=""
+```
+
+4. From Firebase, copy the values and paste them into the empty strings of the respective keys located in the .env file.
+
+5. Be in the root directory and from your command line, run
+``` bash
+npm install or npm i
+```
+6. Now from your command line, run
+``` bash
+npm run prepare
+```
+7. To start Plated, run
+``` bash
+npm run dev
+```
+8. Click http://localhost:3000 in the terminal to open the browser
+
+9. Have fun!
+
 
 ## Tech Stacks
 <div align="center">  

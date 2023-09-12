@@ -14,7 +14,7 @@
 - [Tech Stacks](#tech-stacks)
 ___
 ## What is MyGarage?
-MyGarage is a vehicle job management app. MyGarage allows users to neatly view all your vehicles projects in one place, alongside related expenses.
+MyGarage is a vehicle job management app. MyGarage allows users to neatly view all their vehicles projects in one place, alongside related expenses.
 
 Users no longer have to worry about remembering all the tasks, nitty gritty details, costs, and parts for their jobs. MyGarage allows them to have all these in one place.
 

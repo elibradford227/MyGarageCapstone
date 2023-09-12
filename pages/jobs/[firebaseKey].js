@@ -60,7 +60,7 @@ export default function ViewJob() {
           {jobDetails.title}
         </h2>
         <p>{jobDetails.description || ''}</p>
-        <p>${totalCosts}</p>
+        <h3>${totalCosts}</h3>
         <Button variant="danger" onClick={deleteThisJob} className="m-2">
           Delete Job
         </Button>

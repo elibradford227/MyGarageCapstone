@@ -103,6 +103,7 @@ export default function AddPart() {
               )
             }
           </div>
+          <hr />
           <h3>Parts Catalog</h3>
           <input
             type="text"

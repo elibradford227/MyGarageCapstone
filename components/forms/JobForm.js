@@ -79,7 +79,7 @@ function JobForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Job</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Job</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Job title" className="mb-3">
         <Form.Control

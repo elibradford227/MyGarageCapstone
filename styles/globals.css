@@ -28,9 +28,7 @@ body {
 }
 
 #carViewContainer {
-  /* background-color: blue; */
   width: 100%;
-  /* display: flex; */
 }
 
 #carColumn {
@@ -39,23 +37,16 @@ body {
   height: 70vh;
   padding: 30px;
   max-width: 330px;
-  /* flex-basis: 25%; */
 }
 
 #carsJobs {
-  /* background-color: red; */
   margin-top: 3rem;
   margin-left: 10rem;
   display: block;
   width: 80%;
   min-width: 1px;
   max-width: 800px;
-  /* flex-basis: 75%; */
 }
-/* #jobsh1 {
-  display: inline;
-  margin-bottom: 5rem;
-} */
 
 .btn {
   border-radius: 0px;
@@ -83,15 +74,6 @@ body {
 #navLogo {
   margin-right: 20px;
 }
-/* 
-h1, h2 {
-  display: inline;
-} */
-
-/* h1 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-} */
 
 .addBtn, .addBtnJobs {
   float: right;
@@ -162,6 +144,23 @@ h1, h2 {
   border: 2px solid black;
 }
 
+#dropdown-basic-button {
+  margin-bottom: 10px;
+}
+
+form {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #d5d5d5;
+  box-shadow: 0 0 10px rgba(0,0,0,.09);
+  padding: 30px;
+  box-sizing: content-box;
+  border: 1px solid grey;
+  border-radius:20px;
+  font-size: large;
+}
+
 @media screen and (max-width: 1400px) {
   #carsJobs {
     width: 40%;
@@ -210,11 +209,16 @@ h1, h2 {
 
   .carCard {
     margin-bottom: 50px;
-    margin-left: 11px;
+    /* margin-left: 11px; */
   }
 
   #profile {
     width: 100%;
     height: 70vh
+  }
+
+  #carViewContainer {
+    display: flex;
+    justify-content: center;
   }
 }

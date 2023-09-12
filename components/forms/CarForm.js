@@ -49,7 +49,7 @@ function CarForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Car</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Car</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Car Year" className="mb-3">
         <Form.Control

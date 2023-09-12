@@ -1,6 +1,6 @@
 # MyGarage [![Netlify Status](https://api.netlify.com/api/v1/badges/cb42cf0f-cd68-4a00-8340-3cbc8e186990/deploy-status)](https://app.netlify.com/sites/mygarageapp/deploys)
 
-![Screenshot 2023-09-09 112308](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/b3d8e4d3-b3a1-4d65-a29a-578b94d8b9be)
+![home](https://github.com/elibradford227/MyGarageCapstone/assets/114545170/5d0a6e2e-a6f5-4782-a935-eaa230b8e7c0)
 
 [View Live Demo of MyGarage](https://mygarageapp.netlify.app/)
 

@@ -21,7 +21,6 @@ export default function PartCard({ partObj }) {
         <Button variant="danger" onClick={deleteThisPart} className="m-2">
           Delete
         </Button>
-        {/* <Link href={`/parts/edit/${partObj.firebaseKey}`} passHref> */}
         <Link
           href={{
             pathname: `/parts/edit/${partObj.firebaseKey}`,

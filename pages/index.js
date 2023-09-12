@@ -14,11 +14,11 @@ function Home() {
         style={{
           height: '60vh',
           padding: '30px',
-          maxWidth: '450px',
+          maxWidth: '550px',
           margin: '0 auto',
         }}
       >
-        <h1>Welcome to</h1>
+        <img src="banner.png" alt="logo" />
         <img src="MyGarageNavLogo.png" alt="logo" />
         <br />
         <Link passHref href="/cars">

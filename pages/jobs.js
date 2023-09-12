@@ -57,7 +57,7 @@ export default function Jobs() {
       </head>
       <div className="pageHead">
         <h1>Jobs</h1>
-        <h2>Expenses: ${totalCosts}</h2>
+        <h3>Expenses: ${totalCosts}</h3>
         <input
           type="text"
           placeholder="Search Jobs"

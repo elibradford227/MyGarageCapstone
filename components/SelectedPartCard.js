@@ -23,7 +23,7 @@ export default function CatalogPartCard({ partObj, removePart, partQuantity }) {
   };
 
   return (
-    <Card style={{ width: '17rem', marginRight: '20px' }}>
+    <Card style={{ width: '17rem', marginRight: '20px', marginBottom: '20px' }}>
       <Card.Body>
         <Card.Title>{partObj.name}</Card.Title>
         <p>${cost}</p>

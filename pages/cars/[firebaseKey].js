@@ -40,6 +40,9 @@ export default function ViewCar() {
         <h4>
           Year: {carDetails.year}
         </h4>
+        <h5>
+          Mileage: {carDetails.mileage}
+        </h5>
         <div className="text-white ms-5 details">
           <p>{carDetails.description || ''}</p>
         </div>
@@ -67,7 +70,7 @@ export default function ViewCar() {
         >
           <Button variant="primary" className="addBtn">Add A Job</Button>
         </Link>
-        <div id="jobsDisplay">
+        <div id="jobsDisplay" className="d-flex flex-wrap">
           {carsJobs.map((job) => (
             <JobCard key={job.firebaseKey} jobObj={job} />
           ))}

@@ -9,16 +9,6 @@ function Signin() {
   const safari = /safari/.test(userAgent);
   const ios = /iphone|ipod|ipad/.test(userAgent);
 
-  if (ios) {
-    if (safari) {
-      console.warn('safari');
-    } else if (!safari) {
-      console.warn('webview');
-    }
-  } else {
-    console.warn('not ios');
-  }
-
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"

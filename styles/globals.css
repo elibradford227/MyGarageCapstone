@@ -170,11 +170,10 @@ form {
 @media screen and (max-width: 767px) {
   #carsJobs {
     width: 100%;
-    margin-left: 0.5rem;
+    margin-left: 0.1rem;
   }
 
   #carColumn {
-    margin-left: 10px;
     margin-top: 0px;
     height: 80vh;
   }
@@ -221,4 +220,9 @@ form {
     display: flex;
     justify-content: center;
   }
+
+  #jobsDisplay {
+    margin-left: 10px;
+  }
+
 }

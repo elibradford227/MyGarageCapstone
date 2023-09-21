@@ -13,7 +13,7 @@ export default function PartCard({ partObj }) {
   };
 
   return (
-    <Card style={{ width: '17rem', marginRight: '20px' }}>
+    <Card style={{ width: '17rem', marginRight: '20px', marginBottom: '20px' }}>
       <Card.Body>
         <Card.Title>{partObj.name}</Card.Title>
         <p>Quantity: {partObj.quantity}</p>

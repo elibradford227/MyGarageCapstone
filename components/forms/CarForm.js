@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -30,6 +31,18 @@ function CarForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const imageFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onload = () => {
+      setFormInput((prevState) => ({
+        ...prevState,
+        image: reader.result,
+      }));
+    };
   };
 
   const handleSubmit = (e) => {
@@ -95,7 +108,7 @@ function CarForm({ obj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput4" label="Car Image" className="mb-3">
+      {/* <FloatingLabel controlId="floatingInput4" label="Car Image (Optional)" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
@@ -103,7 +116,24 @@ function CarForm({ obj }) {
           value={formInput.image}
           onChange={handleChange}
         />
-      </FloatingLabel>
+      </FloatingLabel> */}
+
+      <Form.Label className="ml-3">Car Image (Optional)</Form.Label>
+      <div className="d-flex align-items-center">
+        <Form.Control
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="mb-3"
+        />
+        {formInput.image && (
+          <img
+            src={formInput.image}
+            alt="profile"
+            style={{ height: '250px', width: '250px', borderRadius: '0%' }}
+          />
+        )}
+      </div>
 
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Car</Button>
     </Form>

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -26,7 +24,7 @@ function PartForm({ obj, jobId }) {
 
   useEffect(() => {
     setJob(Object.keys(jobId));
-  }, []);
+  }, [jobId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

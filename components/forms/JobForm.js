@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -24,10 +22,6 @@ function JobForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
 
-  const getAllCars = () => {
-    getCars(user.uid).then(setCars);
-  };
-
   useEffect(() => {
     if (obj.firebaseKey) {
       setFormInput(obj);
@@ -40,8 +34,8 @@ function JobForm({ obj }) {
         setSelectedCar(`${result.year} ${result.make} ${result.model}`);
       });
     }
-    getAllCars();
-  }, [obj, user]);
+    getCars(user.uid).then(setCars);
+  }, [obj, user, formInput]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

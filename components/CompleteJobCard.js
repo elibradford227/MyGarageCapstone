@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
@@ -9,7 +8,7 @@ export default function CompleteJobCard({ jobObj }) {
 
   useEffect(() => {
     getSingleCar(jobObj.car_id).then(setCar);
-  }, []);
+  }, [jobObj.car_id]);
 
   return (
     <Card style={{ width: '18rem', marginRight: '20px' }}>

@@ -19,6 +19,8 @@ export default function AddPart() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  // Displays search results on dom
+
   useEffect(() => {
     setSearchResults(parts);
     const results = parts.filter((part) => part.name.toLowerCase().includes(searchTerm));
@@ -56,6 +58,8 @@ export default function AddPart() {
   const getAllParts = () => {
     getCatalogParts().then(setParts);
   };
+
+  // Submits parts to database
 
   const addParts = () => {
     selectedParts.forEach((part) => {

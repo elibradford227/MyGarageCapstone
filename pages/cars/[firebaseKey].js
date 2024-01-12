@@ -60,7 +60,7 @@ export default function ViewCar() {
       </div>
       <div id="carsJobs">
         <h1 id="jobsh1">Jobs</h1>
-        {/* <Link href="/jobs/new" passHref> */}
+        {/* Passes cars firebase key to new job form for auto select on dropdown */}
         <Link
           href={{
             pathname: '/jobs/new',

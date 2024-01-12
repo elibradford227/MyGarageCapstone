@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -7,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../utils/context/authContext';
-import { createCar, updateCar, getCars } from '../../api/carData';
+import { createCar, updateCar } from '../../api/carData';
 
 const initialState = {
   make: '',
@@ -107,16 +106,6 @@ function CarForm({ obj }) {
           required
         />
       </FloatingLabel>
-
-      {/* <FloatingLabel controlId="floatingInput4" label="Car Image (Optional)" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Enter an image url"
-          name="image"
-          value={formInput.image}
-          onChange={handleChange}
-        />
-      </FloatingLabel> */}
 
       <Form.Label className="ml-3">Car Image (Optional)</Form.Label>
       <div className="d-flex align-items-center">

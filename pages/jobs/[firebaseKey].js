@@ -14,6 +14,8 @@ export default function ViewJob() {
   const [jobDetails, setJobDetails] = useState({});
   const [jobParts, setJobParts] = useState([]);
   const [totalCosts, setTotalCosts] = useState('');
+  const [change, setChange] = useState(false);
+
   const router = useRouter();
 
   const { firebaseKey } = router.query;
@@ -44,7 +46,7 @@ export default function ViewJob() {
   useEffect(() => {
     getSingleJob(firebaseKey).then(setJobDetails);
     getJobsParts(jobDetails.id).then(setJobParts);
-  }, [firebaseKey, jobDetails.id]);
+  }, [firebaseKey, jobDetails.id, change]);
 
   useEffect(() => {
     calculateCosts();
@@ -84,7 +86,7 @@ export default function ViewJob() {
         </Link>
         <div id="jobsDisplay" className="d-flex flex-wrap">
           {jobParts.map((part) => (
-            <PartCard key={part.firebaseKey} partObj={part} />
+            <PartCard key={part.firebaseKey} partObj={part} setChange={setChange} />
           ))}
         </div>
       </div>

@@ -21,9 +21,7 @@ export default function Cars() {
 
   return (
     <div>
-      <head>
-        <title>MyGarage | Cars</title>
-      </head>
+      <title>MyGarage | Cars</title>
       <div className="pageHead">
         <h1>Cars</h1>
         <Link href="/cars/new" passHref>

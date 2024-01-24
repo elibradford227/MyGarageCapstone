@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Card from 'react-bootstrap/Card';
 import { deletePart } from '../api/partsData';
 
-export default function PartCard({ partObj }) {
-  const deleteThisPart = () => {
+export default function PartCard({ partObj, setChange }) {
+  const deleteThisPart = async () => {
     if (window.confirm(`Delete ${partObj.name}?`)) {
-      deletePart(partObj.firebaseKey).then(() => window.location.reload());
+      await deletePart(partObj.firebaseKey);
+      setChange((prevState) => !prevState);
     }
   };
 
@@ -47,4 +48,5 @@ PartCard.propTypes = {
     model: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  setChange: PropTypes.func.isRequired,
 };

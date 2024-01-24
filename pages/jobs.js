@@ -52,9 +52,7 @@ export default function Jobs() {
 
   return (
     <div>
-      <head>
-        <title>MyGarage | Jobs</title>
-      </head>
+      <title>MyGarage | Jobs</title>
       <div className="pageHead">
         <h1>Jobs</h1>
         <h3>Expenses: ${totalCosts}</h3>

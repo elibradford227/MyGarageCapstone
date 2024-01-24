@@ -23,7 +23,7 @@ CarCard.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     make: PropTypes.string,
-    year: PropTypes.string,
+    year: PropTypes.number,
     model: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
